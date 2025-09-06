@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Quran CN 离线版 · Mobile</title>
+  <link rel="stylesheet" href="./styles.css"/>
+</head>
+<body>
+  <header class="topbar">
+    <button id="btn-drawer" class="icon-btn" aria-label="打开章节导航" title="打开章节导航">
+      <span class="hamburger"></span>
+    </button>
+    <div class="title">Quran CN 离线版</div>
+  </header>
+
+  <aside id="drawer" class="drawer" aria-hidden="true">
+    <div class="drawer-header">
+      <div class="drawer-title">114 章导航</div>
+      <button id="btn-drawer-close" class="icon-btn" aria-label="关闭">×</button>
+    </div>
+    <nav id="sura-list" class="sura-list"></nav>
+  </aside>
+  <div id="backdrop" class="backdrop" hidden></div>
+
+  <main class="container">
+    <section class="search-box">
+      <div class="search-row">
+        <input id="q" type="text" inputmode="search" placeholder="输入关键词（支持正则 /清.{0,3}洁/i）…">
+        <button id="btn-search">搜索</button>
+      </div>
+      <div class="desc"><a href="#" onclick="return false;">古兰经翻译查询工具</a></div>
+
+      <div class="filters">
+        <label><input type="checkbox" class="translator" value="马仲刚" checked> 马仲刚</label>
+        <label><input type="checkbox" class="translator" value="马金鹏" checked> 马金鹏</label>
+        <label><input type="checkbox" class="translator" value="仝道章" checked> 仝道章</label>
+        <label><input type="checkbox" class="translator" value="王静斋" checked> 王静斋</label>
+        <label><input type="checkbox" class="translator" value="马坚" checked> 马坚</label>
+      </div>
+
+      <div class="nine-grid" id="grid-toggles">
+        <button data-tr="马仲刚" class="grid-btn active">马仲刚</button>
+        <button data-tr="马金鹏" class="grid-btn active">马金鹏</button>
+        <button data-tr="仝道章" class="grid-btn active">仝道章</button>
+        <button data-tr="王静斋" class="grid-btn active">王静斋</button>
+        <button data-tr="马坚" class="grid-btn active">马坚</button>
+      </div>
+    </section>
+
+    <section id="status" class="status" hidden></section>
+    <section id="loading" class="loading" hidden>加载中…</section>
+
+    <section id="results" class="results"></section>
+  </main>
+
+  <template id="tpl-aya">
+    <div class="aya-row">
+      <div class="aya-meta"></div>
+      <div class="cards"></div>
+    </div>
+  </template>
+
+  <script src="./app.js"></script>
+  <!-- Directory/file picker fallback for local file:// environments -->
+  <input id="file-picker" type="file" webkitdirectory directory multiple style="display:none"/>
+</body>
+</html>
