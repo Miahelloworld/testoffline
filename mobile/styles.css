@@ -1,0 +1,70 @@
+/* styles.css - Mobile optimized with light/dark themes and islamic subtle accents */
+:root{
+  --bg:#ffffff; --text:#111; --panel:#ffffff; --muted:#666; --accent:#0a8f52; --accent-2:#bfa24a;
+  --card-radius:14px; --shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+[data-theme="dark"]{
+  --bg:#0b0b0d; --text:#eaeaea; --panel:#0f1113; --muted:#aab0b6;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased;}
+.topbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:12px;height:56px;padding:0 12px;border-bottom:1px solid rgba(0,0,0,0.06);background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4));backdrop-filter: blur(6px);}
+.title{font-weight:700;font-size:16px}
+.icon-btn{appearance:none;border:0;background:transparent;padding:8px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center}
+.hamburger{display:inline-block;width:18px;height:2px;background:var(--text);position:relative}
+.hamburger:before,.hamburger:after{content:"";position:absolute;left:0;right:0;height:2px;background:var(--text)}
+.hamburger:before{top:-6px}.hamburger:after{top:6px}
+
+/* Drawer */
+.drawer{position:fixed;left:0;top:0;bottom:0;width:86%;max-width:360px;background:var(--panel);box-shadow:var(--shadow);transform:translateX(-100%);transition:transform .28s ease;z-index:80;display:flex;flex-direction:column}
+.drawer.open{transform:translateX(0)}
+.drawer-header{display:flex;align-items:center;justify-content:space-between;padding:12px;border-bottom:1px solid rgba(0,0,0,0.06)}
+.sura-list{overflow:auto;padding:8px}
+.sura-item{padding:10px;border-radius:8px;display:flex;gap:8px;align-items:center;border:1px solid rgba(0,0,0,0.03);margin-bottom:8px}
+.sura-item .num{width:34px;height:34px;border-radius:50%;background:linear-gradient(180deg,#fff,#f3f6f4);display:flex;align-items:center;justify-content:center;font-weight:700}
+.sura-item .name{flex:1;}
+
+/* backdrop */
+.backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.35);z-index:70}
+
+/* content */
+.content{padding:14px; padding-bottom: calc(20px + env(safe-area-inset-bottom,0px)); min-height:calc(100vh - 56px)}
+.search-area{display:flex;flex-direction:column;gap:10px;margin-bottom:12px}
+.search-row{display:flex;gap:8px}
+.search-row input[type="search"]{flex:1;padding:12px;border-radius:12px;border:1px solid rgba(0,0,0,0.08);font-size:15px}
+.search-btn{padding:12px 14px;border-radius:12px;border:0;background:var(--accent);color:#fff;font-weight:700;min-width:84px}
+
+/* tool desc and translator checkboxes */
+.tool-desc{display:block;margin-top:4px;color:var(--muted);font-size:13px}
+.trans-select{display:flex;gap:10px;flex-wrap:wrap}
+.trans-select label{display:flex;align-items:center;gap:6px;font-size:14px}
+.trans-select input[type="checkbox"]{width:18px;height:18px}
+
+/* grid filters (9-grid like) */
+.grid-filters{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
+.tile{padding:12px;border-radius:12px;border:1px solid rgba(0,0,0,0.06);background:linear-gradient(180deg,#fff,#fbfbfd);font-weight:700}
+.tile.active{box-shadow:var(--shadow);outline:2px solid rgba(10,143,82,0.08)}
+.tile{background:#fff;color:var(--accent);border:1px solid rgba(10,143,82,0.12)}
+.tile.active{background:var(--accent);color:#fff;border:1px solid rgba(10,143,82,0.18)}
+
+
+/* status & loading */
+.status{padding:10px;border-radius:10px;background:#fff8e1;border:1px solid #ffe082;margin:12px 0;display:block}
+.loading{display:block;padding:10px;border-radius:10px;background:#eef2ff;border:1px solid #c7d2fe;margin:12px 0;font-weight:700}
+
+/* results */
+.results{display:flex;flex-direction:column;gap:12px}
+.aya-row{background:var(--panel);border-radius:14px;padding:12px;border:1px solid rgba(0,0,0,0.04)}
+.aya-meta{font-size:13px;color:var(--muted);margin-bottom:10px;display:flex;gap:8px;align-items:center}
+.cards{display:flex;gap:10px;overflow:auto;padding-bottom:6px}
+.card{min-width:220px;max-width:360px;border-radius:12px;padding:12px;border:1px solid rgba(0,0,0,0.06);box-shadow:var(--shadow);background:linear-gradient(180deg,#fff,#fbfbfd);flex:0 0 auto}
+.card .tr{font-weight:700;font-size:13px;margin-bottom:6px;color:var(--accent)}
+.card .txt{font-size:15px;line-height:1.6;word-break:break-word}
+mark{background:linear-gradient(180deg,#fffbcc,#fff3a3);padding:0 .2em;border-radius:.25em}
+
+/* responsive tweaks */
+@media (min-width:420px){
+  .card{min-width:260px}
+}
+
+/* dark theme toggle helper (user can set data-theme="dark" on body) */

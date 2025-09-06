@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Quran CN 离线版 · Mobile</title>
+  <meta name="theme-color" content="#ffffff"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+  <link rel="manifest" href="./manifest.json"/>
+  <link rel="icon" href="./assets/icons/logo.svg"/>
+  <link rel="stylesheet" href="./styles.css"/>
+</head>
+<body>
+  <header class="topbar">
+    <button id="btn-drawer" class="icon-btn" aria-label="打开章节导航" title="打开章节导航">
+      <span class="hamburger"></span>
+    </button>
+    <div class="title">Quran CN 离线 · 手机</div>
+  </header>
+
+  <div id="drawer" class="drawer" aria-hidden="true">
+    <div class="drawer-header">
+      <div>章节导航</div>
+      <button id="btn-drawer-close" class="icon-btn" aria-label="关闭">✕</button>
+    </div>
+    <div id="sura-list" class="sura-list" role="navigation" aria-label="章节列表"></div>
+  </div>
+  <div id="backdrop" class="backdrop" hidden></div>
+
+  <main class="content">
+    <section class="search-area">
+      <div class="search-row">
+        <input id="q" type="search" placeholder="输入关键词或正则（例如 /清洁/ 或 清洁 葡萄）" autocomplete="off" />
+        <button id="btn-search" class="search-btn">搜索</button>
+      </div>
+      <a class="tool-desc">古兰经翻译查询工具</a>
+      <div class="trans-select">
+        <label><input type="checkbox" class="tr-cb" data-key="mazhonggang" checked/> 马仲刚</label>
+        <label><input type="checkbox" class="tr-cb" data-key="majinpeng" checked/> 马金鹏</label>
+        <label><input type="checkbox" class="tr-cb" data-key="tongdaozhang" checked/> 仝道章</label>
+        <label><input type="checkbox" class="tr-cb" data-key="wangjingzhai" checked/> 王静斋</label>
+        <label><input type="checkbox" class="tr-cb" data-key="majian" checked/> 马坚</label>
+      </div>
+
+      <div class="grid-filters" id="grid-filters" role="toolbar" aria-label="译者筛选">
+        <!-- 9宫格-like translator tiles -->
+        <button class="tile active" data-key="mazhonggang">马仲刚</button>
+        <button class="tile active" data-key="majinpeng">马金鹏</button>
+        <button class="tile active" data-key="tongdaozhang">仝道章</button>
+        <button class="tile active" data-key="wangjingzhai">王静斋</button>
+        <button class="tile active" data-key="majian">马坚</button>
+      </div>
+    </section>
+
+    <section id="status" class="status" hidden></section>
+    <section id="loading" class="loading" hidden>加载中…</section>
+
+    <section id="results" class="results"></section>
+  </main>
+
+  <!-- templates -->
+  <template id="tpl-aya">
+    <div class="aya-row">
+      <div class="aya-meta"><span class="sura-num"></span> · <span class="aya-num"></span> · <span class="aya-name"></span></div>
+      <div class="cards"></div>
+    </div>
+  </template>
+
+  <!-- data loaders: use .data.js wrappers already included in data/ -->
+  <script src="./sura-names.js"></script>
+  <script src="./data/mazhonggang.data.js"></script>
+  <script src="./data/majinpeng.data.js"></script>
+  <script src="./data/tongdaozhang.data.js"></script>
+  <script src="./data/wangjingzhai.data.js"></script>
+  <script src="./data/majian.data.js"></script>
+
+  <script src="./worker.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

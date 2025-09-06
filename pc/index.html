@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>古兰经中文翻译搜索工具 — 离线版</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <div class="header-inner">
+      <a class="logo" href="#">
+        <span class="mark"><img src="assets/icons/logo.svg" alt="" width="22" height="22"></span>
+        <span class="brand">Quran CN Search</span>
+      </a>
+      <div class="searchbar">
+        <input id="q" type="text" placeholder="搜索关键词（支持多关键词：用空格分隔；或开启正则表达式）">
+        <button id="go" class="button">搜索</button>
+      </div>
+    </div>
+    <div class="subtitle">古兰经中文翻译搜索工具</div>
+    <div class="filters">
+      <div class="group" id="filter-translators" title="按译者筛选"></div>
+      <div class="group">
+        <label><input type="checkbox" id="regex"> 正则表达式</label>
+      </div>
+      <div class="group" title="提示">
+        <span>提示：多关键词为“且”逻辑，如 “清洁 葡萄”。</span>
+      </div>
+    </div>
+  </header>
+
+  <aside class="sidebar">
+    <ul class="slist" aria-label="章节导航"></ul>
+  </aside>
+
+  <main class="main">
+    <div class="section-title" id="mode-title">搜索结果 / 章节内容</div>
+    <div class="results"></div>
+  </main>
+</div>
+
+<div class="loading"><div class="spinner">加载中…</div></div>
+
+<!-- Preloaded datasets as JS — ensures file:// works -->
+<script src="data/quran_data.js"></script>
+<script src="data/adapter.js"></script>
+
+<script src="assets/app.js"></script>
+  <script src="pc-patch.js"></script>
+</body>
+</html>
